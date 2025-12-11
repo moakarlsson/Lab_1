@@ -1,11 +1,11 @@
-import express from "express";
-import productsRouter from "./routes/products.js";
-import suppliersRouter from "./routes/suppliers.js";
+import app from "./app.js";
 
-app.use(express.json());
+const PORT = process.argv[2] || process.env.PORT || 3000;
 
-app.use('/products', productsRouter);
-app.use('/suppliers', suppliersRouter);
-
-export default app;
-
+app.listen(PORT, (err) => {
+    if (err) {
+        console.error ("Server failed to start:", err);
+    } else {
+        console.log(`Server running on port ${PORT}`);
+    }
+});
