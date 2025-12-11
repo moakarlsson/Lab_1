@@ -8,5 +8,5 @@
 Technologies used:
 - Node.js
 - Express
-- MySQL / MariaDB
+- MySQL 
 - dotenv for environment variables
