@@ -8,10 +8,12 @@ async function main () {
         console.log("CLI for inventory management:\n");
         console.log("Cancel - press 0")
         console.log("1) View all products\n");
-        console.log("2) Add a new product\n");
-        console.log("3) View all suppliers\n");
-        console.log("4) Add new supplier\n");
-        const choice = await rl.question("Choose option (1,2,3 or 4)");
+        console.log("2) View one product\n");
+        console.log("3) Add a new product\n");
+        console.log("4) View all suppliers\n");
+        console.log("5) View one supplier\n");
+        console.log("6) Add new supplier\n");
+        const choice = await rl.question("Choose option (0-6)");
 
         if (choice === "0") {
             console.log("Shutting down CLI...");
@@ -26,6 +28,17 @@ async function main () {
             }
         }
         if (choice === "2") {
+            try {
+                const id = await rl.question("Submit product Id: ");
+                const [rows] = await db.query (
+                    "SELECT * FROM products WHERE id= ?" , [id]
+                );
+                console.table(rows);
+            } catch (error) {
+                console.error("Something went wrong:", error);
+            }
+        }
+        if (choice === "3") {
             try {
                 const name = await rl.question("Product name: ");
                 const quantityStr = await rl.question("Quantity: ");
@@ -45,7 +58,7 @@ async function main () {
                 console.error("Something went wrong:", error);
             }
         }
-        if (choice === "3") {
+        if (choice === "4") {
             try {
                 const [rows] = await db.query("SELECT * FROM supplier");
                 console.table(rows);
@@ -54,7 +67,18 @@ async function main () {
                 console.error("Something went wrong:", error);
             }
         }
-        if (choice === "4") {
+        if (choice === "5") {
+            try {
+                const id = await rl.question("Submit supplier Id: ");
+                const [rows] = await db.query (
+                    "SELECT * FROM supplier WHERE id= ?" , [id]
+                );
+                console.table(rows);
+            } catch (error) {
+                console.error("Something went wrong:", error);
+            }
+        }
+        if (choice === "6") {
             try {
                 const name = await rl.question("Supplier name: ");
                 const contactInfo = await rl.question("Contact-info: ");
