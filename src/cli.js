@@ -24,7 +24,7 @@ async function main () {
                 const [rows] = await db.query("SELECT * FROM products");
                 console.table(rows);
             } catch (error) {
-                console.error("Something went wrong:", error); 
+                console.error("Database error", error.message); 
             }
         }
         if (choice === "2") {
@@ -35,7 +35,7 @@ async function main () {
                 );
                 console.table(rows);
             } catch (error) {
-                console.error("Something went wrong:", error);
+                console.error("Database error", error.message);
             }
         }
         if (choice === "3") {
@@ -55,7 +55,7 @@ async function main () {
                 );
                 console.log("The product was added!\n")
             } catch (error) {
-                console.error("Something went wrong:", error);
+                console.error("Database error", error.message);
             }
         }
         if (choice === "4") {
@@ -64,7 +64,7 @@ async function main () {
                 console.table(rows);
 
             } catch (error) {
-                console.error("Something went wrong:", error);
+                console.error("Database error", error.message);
             }
         }
         if (choice === "5") {
@@ -75,7 +75,7 @@ async function main () {
                 );
                 console.table(rows);
             } catch (error) {
-                console.error("Something went wrong:", error);
+                console.error("Database error", error.message);
             }
         }
         if (choice === "6") {
@@ -89,7 +89,7 @@ async function main () {
                 );
                 console.log("The supplier was added!\n")
             } catch (error) {
-                console.error("Something went wrong:", error);
+                console.error("Database error", error.message);
             }
         }
     }
