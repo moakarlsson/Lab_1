@@ -4,8 +4,8 @@ USE lab_01;
 
 CREATE TABLE supplier (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(50),
-    contact_info VARCHAR(50)
+    name VARCHAR(50) NOT NULL,
+    contact_info VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE products (
